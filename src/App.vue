@@ -1,30 +1,54 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
+  <nav class="nav-bar">
+    <div class="router-link">
+      <router-link to="/">Intro</router-link>
+    </div>
+    <div class="router-link">
+      <router-link to="/standings_table">Standings stats</router-link>
+    </div>
+    <div class="router-link">
+      <router-link to="/undisciplined_players">Violations stats</router-link>
+    </div>
+    <div class="router-link">
+      <router-link to="/scoring_table">Scoring stats</router-link>
+    </div>
+
+    <div>
+      <v-btn @click="emptyMongoCollection" class="ma-2" color="purple"
+        >Empty DB</v-btn
+      >
+    </div>
   </nav>
   <router-view />
 </template>
+<script setup lang="ts">
+import axios from "axios";
+function emptyMongoCollection() {
+  axios.get("http://localhost:3000/empty_database").then((res) => {
+    const data = res.data;
+    console.log("resposne", data);
+  });
+}
+</script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+.nav-bar {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 
-nav {
-  padding: 30px;
+  background-color: #2aaa8a;
 }
-
-nav a {
-  font-weight: bold;
-  color: #2c3e50;
+.router-link {
+  margin-right: 10px;
+  color: "purple";
 }
-
-nav a.router-link-exact-active {
-  color: #42b983;
+a:hover,
+a:visited,
+a:link,
+a:active {
+  text-decoration: none;
+  color: purple;
 }
 </style>
