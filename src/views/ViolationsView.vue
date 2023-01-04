@@ -52,7 +52,7 @@ async function fillUndisciplinedPlayersTable() {
             const violatedPlayer = team.Speletaji.Speletajs.find(
               (player) => player.Nr === sods.Nr
             );
-            const fullPlayerName = `${violatedPlayer?.Vards} ${violatedPlayer?.Uzvards}`;
+            const fullPlayerName = `${violatedPlayer?.Vards} ${violatedPlayer?.Uzvards}-${clubName}`;
 
             // TODO separate function for goals to proxy
             playerStats[fullPlayerName].club = clubName;
@@ -64,7 +64,7 @@ async function fillUndisciplinedPlayersTable() {
             (player) => player.Nr === violatedPlayerNr
           );
           //   // TODO separate function for goals to proxy
-          const fullPlayerName = `${violatedPlayer?.Vards} ${violatedPlayer?.Uzvards}`;
+          const fullPlayerName = `${violatedPlayer?.Vards} ${violatedPlayer?.Uzvards}-${clubName}`;
           playerStats[fullPlayerName].club = clubName;
           playerStats[fullPlayerName].violations += 1;
         }
@@ -74,7 +74,7 @@ async function fillUndisciplinedPlayersTable() {
   const convertedStatsArray: RupjakieSpeletaji[] = (Object as any)
     .entries(playerStats)
     .map((el: any) => ({
-      player: el[0],
+      player: el[0].split("-")[0],
       club: el[1].club,
       violations: el[1].violations,
     }))

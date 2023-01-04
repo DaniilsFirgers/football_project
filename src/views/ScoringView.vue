@@ -54,7 +54,7 @@ function getAssists(
       const assistent = team.Speletaji.Speletajs.find(
         (player) => player.Nr == assist.Nr
       );
-      const playerFullName = `${assistent?.Vards} ${assistent?.Uzvards}`;
+      const playerFullName = `${assistent?.Vards} ${assistent?.Uzvards}-${clubName}`;
       playerStats[playerFullName].club = clubName;
       playerStats[playerFullName].assists += 1;
     });
@@ -65,7 +65,7 @@ function getAssists(
     const assistent = team.Speletaji.Speletajs.find(
       (player) => player.Nr == assistPlayerNr
     );
-    const playerFullName = `${assistent?.Vards} ${assistent?.Uzvards}`;
+    const playerFullName = `${assistent?.Vards} ${assistent?.Uzvards}-${clubName}`;
     playerStats[playerFullName].club = clubName;
     playerStats[playerFullName].assists += 1;
   }
@@ -83,7 +83,7 @@ async function populateProxy() {
             const goalScorer = team.Speletaji.Speletajs.find(
               (player) => player.Nr === goal.Nr
             );
-            const fullPlayerName = `${goalScorer?.Vards} ${goalScorer?.Uzvards}`;
+            const fullPlayerName = `${goalScorer?.Vards} ${goalScorer?.Uzvards}-${clubName}`;
 
             // TODO separate function for goals to proxy
             playerStats[fullPlayerName].club = clubName;
@@ -100,7 +100,7 @@ async function populateProxy() {
             (player) => player.Nr === goalNr
           );
           // TODO separate function for goals to proxy
-          const fullPlayerName = `${goalScorer?.Vards} ${goalScorer?.Uzvards}`;
+          const fullPlayerName = `${goalScorer?.Vards} ${goalScorer?.Uzvards}-${clubName}`;
           playerStats[fullPlayerName].club = clubName;
           playerStats[fullPlayerName].goals += 1;
 
@@ -113,7 +113,7 @@ async function populateProxy() {
   const convertedStatsArray: RezultativakieSpeletaji[] = (Object as any)
     .entries(playerStats)
     .map((el: any) => ({
-      player: el[0],
+      player: el[0].split("-")[0],
       club: el[1].club,
       goals: el[1].goals,
       assists: el[1].assists,
