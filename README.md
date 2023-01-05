@@ -1,24 +1,18 @@
-# football_project
+# Football Project
 
-## Project setup
-```
-npm install
-```
+---
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+## This project is made as an assignment for CS course 'Introduction to modern programming'
 
-### Compiles and minifies for production
-```
-npm run build
-```
+Author: _Daniils Firgers_
 
-### Lints and fixes files
-```
-npm run lint
-```
+### Project setup
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+- use `npm install` to install required packages
+- use `npm run serve` to start the development project on port 8080
+- use `npm start` to start the server on port 3000
+
+### Caveats
+
+1. Json files with football games are neccesary to run the project
+2. Need to change path to the folder with JSON files
