@@ -9,7 +9,7 @@ collection = db['football']
 
 def insert_files_into_db():
     try:
-        parent_dir = 'C:/Users/dfirg/Desktop/LU/JSON_TestData'
+        parent_dir = os.environ['FOOTBALL_DATA']
         for subdir, dirs, files in os.walk(parent_dir):
             for file in files:
                 file_in_dir = os.path.join(subdir, file)

@@ -20,7 +20,7 @@ app.get("/get_football_data", (req, res) => {
 });
 
 app.get("/empty_database", (req, res) => {
-  db.collection("test")
+  db.collection("football")
     .deleteMany({})
     .then(() => res.status(200).send("Deleted records in the database"));
 });
