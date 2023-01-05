@@ -14,5 +14,9 @@ Author: _Daniils Firgers_
 
 ### Caveats
 
-1. Json files with football games are neccesary to run the project
-2. Need to change path to the folder with JSON files
+1. JSON files with football games are neccesary to run the project
+2. Need to add environment variable `FOOTBALL_DATA'` which is a path to the folder with JSON files
+
+---
+
+![](https://media.giphy.com/media/KGTTNpVuGVhN6/giphy.gif)
